@@ -1,4 +1,5 @@
 import tkinter as tk
+import random
 
 root = tk.Tk()
 root.title("Тест")
@@ -6,8 +7,16 @@ root.geometry("600x600")
 
 selected_answer = tk.IntVar()
 
-lbl = tk.Label(root, text='Кому можно разглашать пароль от своего рабочего компьютера?')
-lbl.grid(row=0, column=0, columnspan=2, pady=50)
+questions = []
+
+with open ('Questions', 'r', encoding='utf-8') as file:
+    question = file.readlines()
+    for line in question:
+        if not line.startswith('№') and line.strip() != '':
+            questions.append(line)
+
+lbl_questions = tk.Label(root, text=f'{random.choice()}')
+lbl_questions.grid(row=0, column=0, columnspan=2, pady=50)
 
 radio1 = tk.Radiobutton(root, text="Никому", value=1, variable=selected_answer)
 radio1.grid(row=1, column=0, pady=10, sticky=tk.W)
