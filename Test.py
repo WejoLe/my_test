@@ -7,32 +7,45 @@ root.geometry("600x600")
 
 selected_answer = tk.IntVar()
 
-#Хранение проверенных вопросов
-questions = []
+#Храненилище вопросов и их ответов в СЛУЧАЙНОМ пордке :)
+questions = random.choice([
+    {
+    'text': 'Кому можно разглашать пароль от своего рабочего компьютера?',
+    'answers': ['Никому', 'Только отделу ИБиИТ', 'Всем'],
+    'correct': 1
+    },
 
+    {
+    'text': 'Кому можно?',
+    'answers': ['Мне','Им'],
+    'correct': 2
+    }
+])
+
+for q in questions:
+    q = questions['text']
+    answer = questions['answers']
+    correct = questions['correct']
+
+'''
 #Логика на нахождение вопроса из файла "Question"
 with open ('Questions', 'r', encoding='utf-8') as file:
     question = file.readlines()
     for line in question:
         if not line.startswith('№') and line.strip() != '':
             questions.append(line)
+'''
 
-#Вывод вопроса в случайном порядке из хранения файлов
-lbl_questions = tk.Label(root, text=f'{random.choice(questions)}')
+#Вывод вопроса
+lbl_questions = tk.Label(root, text=q)
 lbl_questions.grid(row=0, column=0, columnspan=2, pady=50)
 
-#Radiobuuton для вопросов
-radio1 = tk.Radiobutton(root, text="Никому", value=1, variable=selected_answer)
-radio1.grid(row=1, column=0, pady=10, sticky=tk.W)
 
-radio2 = tk.Radiobutton(root, text="Только отделу ИБиИТ", value=2, variable=selected_answer)
-radio2.grid(row=2, column=0, pady=10, sticky=tk.W)
+for radio in answer:
+    radio = tk.Radiobutton(root, text=answer, value=1, variable=selected_answer)
+    radio.grid(row=1, column=0, pady=10, sticky=tk.W)
+    #if
 
-radio3 = tk.Radiobutton(root, text="Непосредственному начальнику", value=3, variable=selected_answer)
-radio3.grid(row=3, column=0, pady=10, sticky=tk.W)
-
-radio4 = tk.Radiobutton(root, text="Всем", value=4, variable=selected_answer)
-radio4.grid(row=4, column=0, pady=10, sticky=tk.W)
 
 #Логика на поверку ответа
 def check_answer():
