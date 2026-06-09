@@ -8,7 +8,7 @@ root.geometry("600x600")
 selected_answer = tk.IntVar()
 
 #Храненилище вопросов и их ответов в СЛУЧАЙНОМ пордке :)
-questions = random.choice([
+current_question = random.choice([
     {
     'text': 'Кому можно разглашать пароль от своего рабочего компьютера?',
     'answers': ['Никому', 'Только отделу ИБиИТ', 'Всем'],
@@ -18,17 +18,17 @@ questions = random.choice([
     {
     'text': 'Кому можно?',
     'answers': ['Мне','Им'],
-    'correct': 2
+    'correct': 0
     }
 ])
 
-for q in questions:
-    q = questions['text']
-    answer = questions['answers']
-    correct = questions['correct']
+#Переменные для храниения значений
+question_text = current_question['text']
+all_answers = current_question['answers']
+correct_index = current_question['correct']
 
-'''
 #Логика на нахождение вопроса из файла "Question"
+'''
 with open ('Questions', 'r', encoding='utf-8') as file:
     question = file.readlines()
     for line in question:
@@ -37,19 +37,17 @@ with open ('Questions', 'r', encoding='utf-8') as file:
 '''
 
 #Вывод вопроса
-lbl_questions = tk.Label(root, text=q)
+lbl_questions = tk.Label(root, text=question_text)
 lbl_questions.grid(row=0, column=0, columnspan=2, pady=50)
 
-
-for radio in answer:
-    radio = tk.Radiobutton(root, text=answer, value=1, variable=selected_answer)
-    radio.grid(row=1, column=0, pady=10, sticky=tk.W)
-    #if
-
+#Логика на создание кнопки
+for idx, ans_text in enumerate(all_answers):
+    radio = tk.Radiobutton(root, text=ans_text, value=idx, variable=selected_answer)
+    radio.grid(row=idx + 1, column=0, pady=10, sticky=tk.W)
 
 #Логика на поверку ответа
 def check_answer():
-    if selected_answer.get() == 1:
+    if selected_answer.get() == correct_index:
         lbl_result.config(text='Ответ правильный!')
     else:
         lbl_result.config(text='Ответ неправильный!')
