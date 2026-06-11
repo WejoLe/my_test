@@ -13,16 +13,19 @@ selected_answer.set(-1)
 with open ('questions.json', 'r', encoding='utf-8') as file:
     question = json.load(file)
 
-corrent_question = random.choice(question)
+current_question = random.choice(question)
+
+questions_complited = []
+save_answer = []
 
 #Переменные для храниения значений
-question_text = corrent_question['text']
-all_answers = corrent_question['answers']
-correct_index = corrent_question['correct']
+question_text = current_question['text']
+all_answers = current_question['answers']
+correct_index = current_question['correct']
 question_number = 0
 
 #Вывод вопроса
-lbl_questions = tk.Label(root, text=f'Вопрос\n\n {question_text}')
+lbl_questions = tk.Label(root, text=f'Вопрос {question_number + 1}\n\n {question_text}')
 lbl_questions.grid(row=0, column=0, columnspan=2, pady=50)
 
 #Логика на создание кнопки
@@ -30,17 +33,16 @@ for idx, ans_text in enumerate(all_answers):
     radio = tk.Radiobutton(root, text=ans_text, value=idx, variable=selected_answer)
     radio.grid(row=idx + 1, column=0, pady=10, sticky=tk.W)
 
+
 def load_next_question():
     global question_number
     question_number += 1
-    new_question_r = random.choice(question)
 
-    question_text = new_question_r['text']
-    all_answers = new_question_r['answers']
-    correct_index = new_question_r['correct']
-    
-    lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {question_text}')
-    radio.grid_forget
+    if question_text not in questions_complited:  
+        questions_complited.append(question_text)
+        #ДОДЕЛАТЬ !!!
+        lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {question_text}')
+
 
 #Логика на поверку ответа
 '''
