@@ -14,6 +14,7 @@ with open ('questions.json', 'r', encoding='utf-8') as file:
     question = json.load(file)
 
 current_question = random.choice(question)
+new_current_question = random.choice(question)
 
 questions_complited = []
 save_answer = []
@@ -33,15 +34,18 @@ for idx, ans_text in enumerate(all_answers):
     radio = tk.Radiobutton(root, text=ans_text, value=idx, variable=selected_answer)
     radio.grid(row=idx + 1, column=0, pady=10, sticky=tk.W)
 
-
 def load_next_question():
     global question_number
     question_number += 1
 
-    if question_text not in questions_complited:  
-        questions_complited.append(question_text)
-        #ДОДЕЛАТЬ !!!
-        lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {question_text}')
+    new_questions_text = random.choice(question)
+    quest = new_questions_text['text']
+
+    if question not in questions_complited:
+
+        questions_complited.append(quest)
+
+        lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {quest}')
 
 
 #Логика на поверку ответа
