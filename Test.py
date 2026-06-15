@@ -14,10 +14,10 @@ with open ('questions.json', 'r', encoding='utf-8') as file:
     question = json.load(file)
 
 current_question = random.choice(question)
-new_current_question = random.choice(question)
 
 questions_complited = []
 save_answer = []
+outher = []
 
 #Переменные для храниения значений
 question_text = current_question['text']
@@ -36,17 +36,19 @@ for idx, ans_text in enumerate(all_answers):
 
 def load_next_question():
     global question_number
-    question_number += 1
 
     new_questions_text = random.choice(question)
     quest = new_questions_text['text']
 
-    if question not in questions_complited:
-
+    if quest not in questions_complited:
+        question_number += 1
         questions_complited.append(quest)
 
         lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {quest}')
+    else:
+        lbl_questions.config(text=f'{quest}')
 
+    print(questions_complited)
 
 #Логика на поверку ответа
 '''
