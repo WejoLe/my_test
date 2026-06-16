@@ -9,21 +9,19 @@ root.geometry("600x600")
 selected_answer = tk.IntVar()
 selected_answer.set(-1)
 
+question_number = 0
+
 #Логика на нахождение вопроса из файла "Question"
 with open ('questions.json', 'r', encoding='utf-8') as file:
     question = json.load(file)
 
-current_question = random.choice(question)
-
-questions_complited = []
-save_answer = []
-outher = []
+random.shuffle(question)
+current_question = question[question_number]
 
 #Переменные для храниения значений
 question_text = current_question['text']
 all_answers = current_question['answers']
 correct_index = current_question['correct']
-question_number = 0
 
 #Вывод вопроса
 lbl_questions = tk.Label(root, text=f'Вопрос {question_number + 1}\n\n {question_text}')
@@ -37,18 +35,14 @@ for idx, ans_text in enumerate(all_answers):
 def load_next_question():
     global question_number
 
-    new_questions_text = random.choice(question)
-    quest = new_questions_text['text']
+    question_number += 1
 
-    if quest not in questions_complited:
-        question_number += 1
-        questions_complited.append(quest)
+    new_current_question = question[question_number]
+    quest = new_current_question['text']
+    ans = current_question['answers']
 
-        lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {quest}')
-    else:
-        lbl_questions.config(text=f'{quest}')
+    lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {quest}')
 
-    print(questions_complited)
 
 #Логика на поверку ответа
 '''
