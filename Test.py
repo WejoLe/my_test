@@ -1,32 +1,39 @@
 import tkinter as tk
 import random
 import json
+from tkinter.messagebox import showwarning
 
 root = tk.Tk()
 root.title("Тест")
 root.geometry("600x600")
+root.eval('tk::PlaceWindow . center')
+
 
 selected_answer = tk.IntVar()
 selected_answer.set(-1)
 
 question_number = 0
 
+#Массив для кнопок
 save_radio = []
+
+#Массив для True & False
 save_TF = []
 
 #Логика на нахождение вопроса из файла "Question"
 with open ('questions.json', 'r', encoding='utf-8') as file:
     question = json.load(file)
 
+#Задаём значение перемешивания в массиве
 random.shuffle(question)
+
+#Получаем случайный 1й вопрос
 current_question = question[question_number]
 
 #Переменные для храниения значений
 question_text = current_question['text']
 all_answers = current_question['answers']
 correct_index = current_question['correct']
-
-number = len(question_text)
 
 #Вывод вопроса
 lbl_questions = tk.Label(root, text=f'Вопрос {question_number + 1}\n\n {question_text}')
@@ -39,38 +46,57 @@ for idx, ans_text in enumerate(all_answers):
 
     save_radio.append(radio)
 
+#Реализует перемешанный порядок кнопок
+random.shuffle(save_radio)
+
 #Переключает вопросы и ответы
 def show_question():
-    global question_number
-    question_number += 1
-
-    new_current_question = question[question_number]
-    quest = new_current_question['text']
-    #cor = new_current_question['corrent']
-
+    #Вывод нового вопроса
     lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {quest}')
 
+    #Вывод нового ответа
     for idx, radio in enumerate(save_radio):
-        radio.config(text=new_current_question['answers'][idx])
+        radio.config(text=ans[idx])
 
+    #Утсановка значения для того что бы следующий вопрос не был тоже выбран как и предыдущий
     selected_answer.set(-1)
+    
+def next_question():
+    global question_number, quest, ans
+    question_number += 1
+
+    #Получаем новые значения что бы получить новый вопрос
+    new_current_question = question[question_number]
+    quest = new_current_question['text']
+    ans = new_current_question['answers']
+
+    run = len(question)
+
+    if question_number > 3:
+        print('stop')
+
+    return show_question()
+
+#Функция на вывод всплывающего окна
+def open_warning():
+    showwarning(title='Предупреждение', message='Выберете вариант ответа')
 
 #Логика на поверку ответа
 def check_answer():
-    if selected_answer.set(-1) != selected_answer.get():
-        print('Ошибка')
-    else:
-        print('Круто')
 
+    #Условие на то что бы пользовтель не мог пройти дальше пока не выберет овтет
+    if selected_answer.get() == -1:
+        return open_warning()
+
+    #Условие добавления Правильного или Неправильного вопроса
     if selected_answer.get() == correct_index:
         save_TF.append(True)
     else:
         save_TF.append(False)
 
-    print(save_TF)
-    return show_question()
+    return next_question()
 
-#Чтение сколько вопросов в хранилище
+#Чтение в int значении. Сколько вопросов в хранилище
 Go = len(all_answers)
 
 #Кнопка для проверки
