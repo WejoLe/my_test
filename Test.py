@@ -35,6 +35,11 @@ question_text = current_question['text']
 all_answers = current_question['answers']
 correct_index = current_question['correct']
 
+#Реализует перемешанный порядок кнопок
+'''
+random.shuffle(all_answers)
+'''
+
 #Вывод вопроса
 lbl_questions = tk.Label(root, text=f'Вопрос {question_number + 1}\n\n {question_text}')
 lbl_questions.grid(row=0, column=0, columnspan=2, pady=50)
@@ -46,36 +51,34 @@ for idx, ans_text in enumerate(all_answers):
 
     save_radio.append(radio)
 
-#Реализует перемешанный порядок кнопок
-random.shuffle(save_radio)
-
-#Переключает вопросы и ответы
-def show_question():
-    #Вывод нового вопроса
-    lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {quest}')
-
-    #Вывод нового ответа
-    for idx, radio in enumerate(save_radio):
-        radio.config(text=ans[idx])
-
-    #Утсановка значения для того что бы следующий вопрос не был тоже выбран как и предыдущий
-    selected_answer.set(-1)
-    
 def next_question():
-    global question_number, quest, ans
+    global question_number, question_text, all_answers, correct_index, current_question
     question_number += 1
 
-    #Получаем новые значения что бы получить новый вопрос
-    new_current_question = question[question_number]
-    quest = new_current_question['text']
-    ans = new_current_question['answers']
+    current_question = question[question_number]
 
-    run = len(question)
-
-    if question_number > 3:
+    question_text = current_question['text']
+    all_answers = current_question['answers']
+    correct_index = current_question['correct']
+    
+    #Условие по остановке вопроса и вывод результатов
+    if question_number >= 2:
         print('stop')
 
     return show_question()
+
+#Переключает вопросы и ответы
+def show_question():
+
+    #Вывод нового вопроса
+    lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {question_text}')
+
+    #Вывод нового ответа
+    for idx, radio in enumerate(save_radio):
+        radio.config(text=all_answers[idx])
+
+    #Утсановка значения для того что бы следующий вопрос не был тоже выбран как и предыдущий
+    selected_answer.set(-1)
 
 #Функция на вывод всплывающего окна
 def open_warning():
