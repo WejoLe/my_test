@@ -13,6 +13,7 @@ selected_answer = tk.IntVar()
 selected_answer.set(-1)
 
 question_number = 0
+max_questions = 2
 
 #Массив для кнопок
 save_radio = []
@@ -60,13 +61,25 @@ def next_question():
     question_text = current_question['text']
     all_answers = current_question['answers']
     correct_index = current_question['correct']
+
+    correct_count = sum(save_TF)
+
+
+    #Условие по остановке теста и удаление лишних объектов
+    if question_number != max_questions:
+        return show_question()
+    else:
+        lbl_questions.config(text=f'{correct_count} {save_TF}')
+        btn.destroy()
+        for i in save_radio:
+            i.destroy()
+
+
+def result():
+    ...
+
+    return result
     
-    #Условие по остановке вопроса и вывод результатов
-    if question_number >= 2:
-        print('stop')
-
-    return show_question()
-
 #Переключает вопросы и ответы
 def show_question():
 
@@ -99,11 +112,8 @@ def check_answer():
 
     return next_question()
 
-#Чтение в int значении. Сколько вопросов в хранилище
-Go = len(all_answers)
-
 #Кнопка для проверки
 btn = tk.Button(root, text='Ответить', command=check_answer)
-btn.grid(row=Go + 2, column=0, pady=20)
+btn.grid(row=6, column=0, pady=20)
 
 root.mainloop()
