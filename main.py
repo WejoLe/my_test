@@ -13,7 +13,7 @@ selected_answer = tk.IntVar()
 selected_answer.set(-1)
 
 question_number = 0
-max_questions = 15
+max_questions = 3
 
 #Массив для кнопок что бы потом изменить их текст
 save_radio = []
@@ -56,30 +56,21 @@ def next_question():
     global question_number, question_text, all_answers, correct_index, current_question
     question_number += 1
 
+    #Условие по остановке теста и удаление лишних объектов
+    if question_number >= max_questions:
+        lbl_questions.config(text=f'Тест пройден! Правильных ответов: {sum(save_TF)} из {len(save_TF)} вопросов')
+        btn.destroy()
+        for i in save_radio:
+            i.destroy()
+        return
+
     current_question = question[question_number]
 
     question_text = current_question['text']
     all_answers = current_question['answers']
     correct_index = current_question['correct']
-
-    correct_count = sum(save_TF)
-    total_count = len(save_TF)
-
-
-    #Условие по остановке теста и удаление лишних объектов
-    if question_number != max_questions:
-        return show_question()
-    else:
-        lbl_questions.config(text=f'Тест пройден! Правильных ответов: {correct_count} из {total_count} вопросов')
-        btn.destroy()
-        for i in save_radio:
-            i.destroy()
-
-
-def result():
-    ...
-
-    return result
+    
+    show_question()
     
 #Переключает вопросы и ответы
 def show_question():
