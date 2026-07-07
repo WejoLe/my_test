@@ -39,6 +39,7 @@ correct_index = current_question['correct']
 #Реализует перемешанный порядок кнопок
 '''
 random.shuffle(all_answers)
+
 '''
 
 #Вывод вопроса
@@ -58,7 +59,7 @@ def next_question():
 
     #Условие по остановке теста и удаление лишних объектов
     if question_number >= max_questions:
-        lbl_questions.config(text=f'Тест пройден! Правильных ответов: {sum(save_TF)} из {len(save_TF)} вопросов')
+        lbl_questions.config(text=f'Тест пройден! Правильных ответов: {sum(save_TF)} из {len(save_TF)} вопросов \n\n Процент правильных ответов: {result():.2f}%')
         btn.destroy()
         for i in save_radio:
             i.destroy()
@@ -71,6 +72,15 @@ def next_question():
     correct_index = current_question['correct']
     
     show_question()
+
+def result():
+
+    correct_count = sum(save_TF)
+    total_count = len(save_TF)
+
+    res = (correct_count / total_count) * 100
+
+    return res
     
 #Переключает вопросы и ответы
 def show_question():
