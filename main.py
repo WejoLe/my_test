@@ -34,13 +34,8 @@ current_question = question[question_number]
 #Переменные для храниения значений
 question_text = current_question['text']
 all_answers = current_question['answers']
-correct_index = current_question['correct']
 
-#Реализует перемешанный порядок кнопок
-'''
 random.shuffle(all_answers)
-
-'''
 
 #Вывод вопроса
 lbl_questions = tk.Label(root, text=f'Вопрос {question_number + 1}\n\n {question_text}')
@@ -54,7 +49,7 @@ for idx, ans_text in enumerate(all_answers):
     save_radio.append(radio)
 
 def next_question():
-    global question_number, question_text, all_answers, correct_index, current_question
+    global question_number, question_text, all_answers, current_question
     question_number += 1
 
     #Условие по остановке теста и удаление лишних объектов
@@ -69,7 +64,6 @@ def next_question():
 
     question_text = current_question['text']
     all_answers = current_question['answers']
-    correct_index = current_question['correct']
     
     show_question()
 
@@ -107,7 +101,7 @@ def check_answer():
         return open_warning()
 
     #Условие добавления Правильного или Неправильного вопроса
-    if selected_answer.get() == correct_index:
+    if selected_answer.get() == ['is_correct']:
         save_TF.append(True)
     else:
         save_TF.append(False)

@@ -1,189 +1,202 @@
 [
     {
     "text": "Что такое фишинг?",
-    "answers": 
-    ["Метод шифрования данных",
-    "Вид мошенничества с целью получения конфиденциальной информации путём маскировки под доверенный источник",
-    "Тип компьютерного вируса",
-    "Протокол передачи данных"],
-    "correct": 1
+    "answers": [
+        {"text": "Метод шифрования данных", "is_correct": false},
+        {"text": "Вид мошенничества с целью получения конфиденциальной информации путём маскировки под доверенный источник", "is_correct": true},
+        {"text": "Тип компьютерного вируса", "is_correct": false},
+        {"text": "Протокол передачи данных", "is_correct": false}
+        ]
     },
 
     {
     "text": "Какой из алгоритмов является симметричным шифром?",
-    "answers": ["RSA","ECC","AES","DSA"],
-    "correct": 2
+    "answers": [
+        {"text": "RSA", "is_correct": false},
+        {"text": "ECC", "is_correct": false},
+        {"text": "AES", "is_correct": true},
+        {"text": "DSA", "is_correct": false}
+        ]
     },
 
     {
     "text": "Что означает аббревиатура DDoS?",
-    "answers": 
-    ["Distributed Denial of Service",
-    "Distributed Denial of Service — распределённая атака типа «отказ в обслуживании»",
-    "Direct Data over Service",
-    "Domain Data of Service"],
-    "correct": 1
+    "answers": [
+        {"text": "Distributed Denial of Service", "is_correct": false},
+        {"text": "Distributed Denial of Service — распределённая атака типа «отказ в обслуживании»", "is_correct": true},
+        {"text": "Direct Data over Service", "is_correct": false},
+        {"text": "Domain Data of Service", "is_correct": false}
+        ]
     },
 
     {
     "text": "Какой протокол обеспечивает безопасную передачу данных в интернете?",
-    "answers": ["HTTP","FTP","HTTPS","SMTP"],
-    "correct": 2
+    "answers": [
+        {"text": "HTTP","is_correct": false},
+        {"text": "FTP","is_correct": false},
+        {"text": "HTTPS","is_correct": true},
+        {"text": "SMTP","is_correct": false}
+        ]
     },
 
     {
     "text": "Что такое хеширование?",
-    "answers": 
-    ["Процесс шифрования с возможностью расшифровки",
-    "Преобразование данных в уникальную строку фиксированной длины без возможности восстановления исходных данных",
-    "Сжатие файлов",
-    "Копирование данных"],
-    "correct": 1
+    "answers": [
+        {"text": "Процесс шифрования с возможностью расшифровки", "is_correct": false},
+        {"text": "Преобразование данных в уникальную строку фиксированной длины без возможности восстановления исходных данных", "is_correct": true},
+        {"text": "Сжатие файлов", "is_correct": false},
+        {"text": "Копирование данных", "is_correct": false}
+        ]
     },
 
     {
     "text": "Какой тип вредоносного ПО шифрует файлы пользователя и требует выкуп?",
-    "answers": ["Троян", "Шпионское ПО", "Рансомвер (Ransomware)", "Adware"],
-    "correct": 2
+    "answers": [
+        {"text": "Троян", "is_correct": false},
+        {"text": "Шпионское ПО", "is_correct": false},
+        {"text": "Рансомвер (Ransomware)", "is_correct": true},
+        {"text": "Adware", "is_correct": false}
+        ]
     },
 
     {
     "text": "Что такое двухфакторная аутентификация (2FA)?",
-    "answers": 
-    ["Вход с помощью двух разных компьютеров", 
-    "Метод подтверждения личности, требующий двух различных факторов (например, пароль и код из SMS)", 
-    "Использование двух паролей одновременно", 
-    "Двойное шифрование данных"],
-    "correct": 1
+    "answers": [
+        {"text": "Вход с помощью двух разных компьютеров", "is_correct": false}, 
+        {"text": "Метод подтверждения личности, требующий двух различных факторов (например, пароль и код из SMS)", "is_correct": true}, 
+        {"text": "Использование двух паролей одновременно", "is_correct": false}, 
+        {"text": "Двойное шифрование данных", "is_correct": false}
+        ]
     },
 
     {
     "text": "Что означает триада CIA в информационной безопасности?",
-    "answers": 
-    ["Central Intelligence Agency", 
-    "Confidentiality, Integrity, Availability — Конфиденциальность, Целостность, Доступность", 
-    "Control, Inspect, Authenticate", 
-    "Code, Internet, Application"],
-    "correct": 1
+    "answers": [
+        {"text":    "Central Intelligence Agency", "is_correct": false}, 
+        {"text":    "Confidentiality, Integrity, Availability — Конфиденциальность, Целостность, Доступность", "is_correct": true}, 
+        {"text":    "Control, Inspect, Authenticate", "is_correct": false}, 
+        {"text":    "Code, Internet, Application", "is_correct": false}
+        ]
     },
 
     {
     "text": "Какой порт используется по умолчанию для HTTPS?",
-    "answers": 
-    ["80", 
-    "443", 
-    "21", 
-    "25"],
-    "correct": 1
+    "answers": [
+        {"text": "80", "is_correct": false}, 
+        {"text": "443", "is_correct": true}, 
+        {"text": "21", "is_correct": false}, 
+        {"text": "25", "is_correct": false}
+        ]
     },
     
     {
     "text": "Что такое SQL-инъекция?",
-    "answers": 
-    ["Оптимизация запросов к БД", 
-    "Внедрение вредоносного SQL-кода через входные данные приложения", 
-    "Резервное копирование БД", 
-    "Шифрование БД"],
-    "correct": 1
+    "answers": [
+        {"text": "Оптимизация запросов к БД", "is_correct": false}, 
+        {"text": "Внедрение вредоносного SQL-кода через входные данные приложения", "is_correct": true}, 
+        {"text": "Резервное копирование БД", "is_correct": false}, 
+        {"text": "Шифрование БД", "is_correct": false}
+        ]
     },
 
     {
     "text": "Что такое межсетевой экран (firewall)?",
-    "answers": 
-    ["Антивирусная программа", 
-    "Средство, контролирующее и фильтрирующее сетевой трафик по заданным правилам", 
-    "Система резервного копирования", 
-    "Протокол шифрования"],
-    "correct": 1
+    "answers": [
+        {"text": "Антивирусная программа", "is_correct": false}, 
+        {"text": "Средство, контролирующее и фильтрирующее сетевой трафик по заданным правилам", "is_correct": true}, 
+        {"text": "Система резервного копирования", "is_correct": false}, 
+        {"text": "Протокол шифрования", "is_correct": false}
+        ]
     },
 
     {
     "text": "Какая технология лежит в основе создания виртуальных машин?",
-    "answers": 
-    ["Компиляция", 
-    "Виртуализация", 
-    "Индексация", 
-    "Кэширование"],
-    "correct": 1
+    "answers": [
+        {"text": "Компиляция", "is_correct": false}, 
+        {"text": "Виртуализация", "is_correct": true}, 
+        {"text": "Индексация", "is_correct": false}, 
+        {"text": "Кэширование", "is_correct": false}
+        ]
     },
 
     {
     "text": "Что означает модель IaaS в облачных вычислениях?",
     "answers": 
-    ["Internet as a Service", 
-    "Infrastructure as a Service — Инфраструктура как услуга", 
-    "Integration as a Service", 
-    "Information as a Service"],
-    "correct": 1
+    [
+        {"text": "Internet as a Service", "is_correct": false}, 
+        {"text": "Infrastructure as a Service — Инфраструктура как услуга", "is_correct": true}, 
+        {"text": "Integration as a Service", "is_correct": false}, 
+        {"text": "Information as a Service", "is_correct": false}
+        ]
     },
 
     {
     "text": "Какой язык используется для работы с реляционными базами данных?",
-    "answers": 
-    ["HTML", 
-    "SQL", 
-    "Python", 
-    "XML"],
-    "correct": 1
+    "answers": [
+        {"text": "HTML", "is_correct": false}, 
+        {"text": "SQL", "is_correct": true}, 
+        {"text": "Python", "is_correct": false}, 
+        {"text": "XML", "is_correct": false}
+        ]
     },
 
     {
     "text": "Что такое API?",
-    "answers": 
-    ["Операционная система", 
-    "Application Programming Interface — программный интерфейс для взаимодействия между приложениями", 
-    "Тип базы данных", 
-    "Протокол шифрования"],
-    "correct": 1
+    "answers": [
+        {"text": "Операционная система", "is_correct": false}, 
+        {"text": "Application Programming Interface — программный интерфейс для взаимодействия между приложениями", "is_correct": true}, 
+        {"text": "Тип базы данных", "is_correct": false}, 
+        {"text": "Протокол шифрования", "is_correct": false}
+        ]
     },
 
     {
     "text": "Что такое блокчейн?",
-    "answers": 
-    ["Тип антивируса", 
-    "Распределённый реестр, хранящий данные в виде цепочки блоков с криптографической защитой", 
-    "Язык программирования", 
-    "Тип сетевого кабеля"],
-    "correct": 1
+    "answers": [
+        {"text": "Тип антивируса", "is_correct": false}, 
+        {"text": "Распределённый реестр, хранящий данные в виде цепочки блоков с криптографической защитой", "is_correct": true}, 
+        {"text": "Язык программирования", "is_correct": false}, 
+        {"text": "Тип сетевого кабеля", "is_correct": false}
+        ]
     },
 
     {
     "text": "Какой протокол используется для безопасного удалённого доступа к серверу?",
-    "answers": 
-    ["Telnet", 
-    "SSH", 
-    "FTP", 
-    "POP3"],
-    "correct": 1
+    "answers": [
+        {"text": "Telnet", "is_correct": false},
+        {"text": "SSH", "is_correct": true}, 
+        {"text": "FTP", "is_correct": false},
+        {"text": "POP3", "is_correct": false}
+        ]
     },
 
     {
     "text": "Что такое социальная инженерия?",
-    "answers": 
-    ["Разработка социальных сетей", 
-    "Метод получения доступа к информации через манипуляцию людьми, а не взлом систем", 
-    "Автоматическое тестирование ПО", 
-    "Вид шифрования"],
-    "correct": 1
+    "answers": [
+        {"text": "Разработка социальных сетей", "is_correct": false}, 
+        {"text": "Метод получения доступа к информации через манипуляцию людьми, а не взлом систем", "is_correct": true}, 
+        {"text": "Автоматическое тестирование ПО", "is_correct": false}, 
+        {"text": "Вид шифрования", "is_correct": false}
+        ]
     },
 
     {
     "text": "Что такое модель Zero Trust?",
-    "answers": 
-    ["Полное отсутствие паролей", 
-    "Принцип безопасности «никому не доверяй, проверяй каждый запрос»", 
-    "Открытый доступ ко всем ресурсам", 
-    "Использование только облачных сервисов"],
-    "correct": 1
+    "answers": [
+        {"text": "Полное отсутствие паролей", "is_correct": false}, 
+        {"text": "Принцип безопасности «никому не доверяй, проверяй каждый запрос»", "is_correct": true}, 
+        {"text": "Открытый доступ ко всем ресурсам", "is_correct": false}, 
+        {"text": "Использование только облачных сервисов", "is_correct": false}
+        ]
     },
 
     {
     "text": "Что такое DevSecOps?",
-    "answers": 
-    ["Операционная система для разработчиков", 
-    "Интеграция практик безопасности на всех этапах жизненного цикла разработки ПО", 
-    "Язык программирования", 
-    "Тип базы данных"],
-    "correct": 1
+    "answers": [
+        {"text": "Операционная система для разработчиков", "is_correct": false}, 
+        {"text": "Интеграция практик безопасности на всех этапах жизненного цикла разработки ПО", "is_correct": true}, 
+        {"text": "Язык программирования", "is_correct": false}, 
+        {"text": "Тип базы данных", "is_correct": false}
+        ]
     }
 ]
