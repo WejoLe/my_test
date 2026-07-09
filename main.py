@@ -1,3 +1,4 @@
+#=================== 1. ИНИЦИАЛИЗАЦИЯ (GUI + переменные) =================== 
 import tkinter as tk
 import random
 import json
@@ -7,7 +8,6 @@ root = tk.Tk()
 root.title("Тест")
 root.geometry("600x600")
 root.eval('tk::PlaceWindow . center')
-
 
 selected_answer = tk.IntVar()
 selected_answer.set(-1)
@@ -20,6 +20,8 @@ save_radio = []
 
 #Массив для True & False
 save_TF = []
+
+#===================== 2. ЗАГРУЗКА ДАННЫХ ===================== 
 
 #Логика на нахождение вопроса из файла "Question"
 with open ('questions.json', 'r', encoding='utf-8') as file:
@@ -37,6 +39,8 @@ all_answers = current_question['answers']
 
 random.shuffle(all_answers)
 
+#=================== 3. СОЗДАНИЕ ИНТЕРФЕЙСА (кнопки, лейблы) =================== 
+
 #Вывод вопроса
 lbl_questions = tk.Label(root, text=f'Вопрос {question_number + 1}\n\n {question_text}')
 lbl_questions.grid(row=0, column=0, columnspan=2, pady=50)
@@ -47,6 +51,8 @@ for idx, ans_text in enumerate(all_answers):
     radio.grid(row=idx + 1, column=0, pady=10, sticky=tk.W)
 
     save_radio.append(radio)
+
+#================================================= 4. ФУНКЦИИ (логика) ================================================= 
 
 def next_question():
     global question_number, question_text, all_answers, current_question
