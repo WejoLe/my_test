@@ -63,7 +63,9 @@ def next_question():
     current_question = question[question_number]
 
     question_text = current_question['text']
-    all_answers = current_question['answers']
+    all_answers = current_question['answers'][:]
+    random.shuffle(all_answers)
+
     
     show_question()
 
@@ -108,6 +110,8 @@ def check_answer():
         save_TF.append(True)
     else:
         save_TF.append(False)
+
+    print(save_TF)
 
     return next_question()
 
