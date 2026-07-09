@@ -77,9 +77,10 @@ def result():
     
 #Переключает вопросы и ответы
 def show_question():
+    global all_answers
 
-    all_answers = current_question['answers'][:] # Делаем копию
-    random.shuffle(all_answers) # И сразу перемешиваем её
+    all_answers = current_question['answers'][:] #Делаем копию
+    random.shuffle(all_answers) # Исразу перемешиваем её
 
     #Вывод нового вопроса
     lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {question_text}')
@@ -93,7 +94,7 @@ def show_question():
 
 #Функция на вывод всплывающего окна
 def open_warning():
-    showwarning(title='Предупреждение', message='Выберете вариант ответа')
+    showwarning(title='Предупреждение', message='Выберите вариант ответа')
 
 #Логика на поверку ответа
 def check_answer():
