@@ -63,10 +63,7 @@ def next_question():
     current_question = question[question_number]
 
     question_text = current_question['text']
-    all_answers = current_question['answers'][:]
-    random.shuffle(all_answers)
-
-    
+    all_answers = current_question['answers']
     show_question()
 
 def result():
@@ -80,6 +77,9 @@ def result():
     
 #Переключает вопросы и ответы
 def show_question():
+
+    all_answers = current_question['answers'][:] # Делаем копию
+    random.shuffle(all_answers) # И сразу перемешиваем её
 
     #Вывод нового вопроса
     lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {question_text}')
