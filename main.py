@@ -43,7 +43,7 @@ lbl_questions.grid(row=0, column=0, columnspan=2, pady=50)
 
 #Логика на создание кнопки
 for idx, ans_text in enumerate(all_answers):
-    radio = tk.Radiobutton(root, text=ans_text, value=idx, variable=selected_answer)
+    radio = tk.Radiobutton(root, text=ans_text['text'], value=idx, variable=selected_answer)
     radio.grid(row=idx + 1, column=0, pady=10, sticky=tk.W)
 
     save_radio.append(radio)
@@ -84,7 +84,7 @@ def show_question():
 
     #Вывод нового ответа
     for idx, radio in enumerate(save_radio):
-        radio.config(text=all_answers[idx])
+        radio.config(text=all_answers[idx]['text'])
 
     #Утсановка значения для того что бы следующий вопрос не был тоже выбран как и предыдущий
     selected_answer.set(-1)
@@ -100,8 +100,11 @@ def check_answer():
     if selected_answer.get() == -1:
         return open_warning()
 
+    idx = selected_answer.get()
+    chosen_answer = all_answers[idx]
+
     #Условие добавления Правильного или Неправильного вопроса
-    if selected_answer.get() == ['is_correct']:
+    if chosen_answer['is_correct']:
         save_TF.append(True)
     else:
         save_TF.append(False)
