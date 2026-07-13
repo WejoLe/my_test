@@ -10,6 +10,9 @@ root.title("Тест")
 root.geometry("700x750")
 root.eval('tk::PlaceWindow . center')
 root.configure(bg = '#f0f4f8')
+root.columnconfigure(0, weight=1)
+root.columnconfigure(1, weight=1)
+
 
 selected_answer = tk.IntVar(); selected_answer.set(-1)
 
@@ -44,14 +47,22 @@ random.shuffle(all_answers)
 
 #Вывод вопроса
 lbl_questions = tk.Label(root, text=f'Вопрос {question_number + 1}\n\n {question_text}',
-font=('Helvetica', 16, 'bold'), wraplength=600, justify=tk.CENTER, anchor=tk.W, bg = '#f0f4f8')
+font=('Helvetica', 16, 'bold'),
+wraplength=600,
+justify = tk.CENTER,
+bg = '#f0f4f8')
 lbl_questions.grid(row=0, column=0, columnspan=2, pady=50)
 
 #Логика на создание кнопки
 for idx, ans_text in enumerate(all_answers):
     radio = tk.Radiobutton(root, text=ans_text['text'], value=idx, variable=selected_answer,
-    indicatoron=0, selectcolor="#2f8acb",  width=42, pady=12, relief =tk.FLAT, bg = '#f0f4f8')
-    radio.grid(row=idx + 1, column=0, pady=10, sticky=tk.W)
+    indicatoron=0,
+    selectcolor="#2f8acb",
+    width=42,
+    pady=12,
+    relief = tk.FLAT,
+    bg = '#ffffff')
+    radio.grid(row=idx + 1, column=0, pady=10, columnspan=2, sticky=tk.W)
 
     save_radio.append(radio)
 
@@ -124,7 +135,7 @@ def check_answer():
     return next_question()
 
 #Кнопка для проверки
-btn = tk.Button(root, text='Ответить', command=check_answer, bg = '#f0f4f8')
-btn.grid(row=6, column=0, pady=20)
+btn = tk.Button(root, text='Ответить', command=check_answer)
+btn.grid(row=6, column=0, pady=20, columnspan=2)
 
 root.mainloop()
