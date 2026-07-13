@@ -1,4 +1,5 @@
 #=================== 1. ИНИЦИАЛИЗАЦИЯ (GUI + переменные) =================== 
+
 import tkinter as tk
 import random
 import json
@@ -6,14 +7,14 @@ from tkinter.messagebox import showwarning
 
 root = tk.Tk()
 root.title("Тест")
-root.geometry("600x600")
+root.geometry("700x750")
 root.eval('tk::PlaceWindow . center')
+root.configure(bg = '#f0f4f8')
 
-selected_answer = tk.IntVar()
-selected_answer.set(-1)
+selected_answer = tk.IntVar(); selected_answer.set(-1)
 
 question_number = 0
-max_questions = 3
+max_questions = 15
 
 #Массив для кнопок что бы потом изменить их текст
 save_radio = []
@@ -42,12 +43,14 @@ random.shuffle(all_answers)
 #=================== 3. СОЗДАНИЕ ИНТЕРФЕЙСА (кнопки, лейблы) =================== 
 
 #Вывод вопроса
-lbl_questions = tk.Label(root, text=f'Вопрос {question_number + 1}\n\n {question_text}')
+lbl_questions = tk.Label(root, text=f'Вопрос {question_number + 1}\n\n {question_text}',
+font=('Helvetica', 16, 'bold'), wraplength=600, justify=tk.CENTER, anchor=tk.W, bg = '#f0f4f8')
 lbl_questions.grid(row=0, column=0, columnspan=2, pady=50)
 
 #Логика на создание кнопки
 for idx, ans_text in enumerate(all_answers):
-    radio = tk.Radiobutton(root, text=ans_text['text'], value=idx, variable=selected_answer)
+    radio = tk.Radiobutton(root, text=ans_text['text'], value=idx, variable=selected_answer,
+    indicatoron=0, selectcolor="#2f8acb",  width=42, pady=12, relief =tk.FLAT, bg = '#f0f4f8')
     radio.grid(row=idx + 1, column=0, pady=10, sticky=tk.W)
 
     save_radio.append(radio)
@@ -118,12 +121,10 @@ def check_answer():
     else:
         save_TF.append(False)
 
-    print(save_TF)
-
     return next_question()
 
 #Кнопка для проверки
-btn = tk.Button(root, text='Ответить', command=check_answer)
+btn = tk.Button(root, text='Ответить', command=check_answer, bg = '#f0f4f8')
 btn.grid(row=6, column=0, pady=20)
 
 root.mainloop()
