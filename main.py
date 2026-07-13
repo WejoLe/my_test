@@ -62,7 +62,7 @@ for idx, ans_text in enumerate(all_answers):
     pady=12,
     relief = tk.FLAT,
     bg = '#ffffff')
-    radio.grid(row=idx + 1, column=0, pady=10, columnspan=2, sticky=tk.W)
+    radio.grid(row=idx + 1, column=0, pady=10, columnspan=2)
 
     save_radio.append(radio)
 
