@@ -7,7 +7,7 @@ from tkinter.messagebox import showwarning
 
 root = tk.Tk()
 root.title("Тест")
-root.geometry("700x750")
+root.geometry("600x600")
 root.eval('tk::PlaceWindow . center')
 root.configure(bg = '#f0f4f8')
 root.columnconfigure(0, weight=1)
@@ -45,13 +45,21 @@ random.shuffle(all_answers)
 
 #=================== 3. СОЗДАНИЕ ИНТЕРФЕЙСА (кнопки, лейблы) =================== 
 
+#Вывод номера вопроса
+lbl_num = tk.Label(root, text=f'Вопрос {question_number + 1}',
+font=('Helvetica', 16),
+wraplength=600,
+justify = tk.CENTER,
+bg = '#f0f4f8')
+lbl_num.grid(row=0, column=0, columnspan=2, pady=[50, 10])
+
 #Вывод вопроса
-lbl_questions = tk.Label(root, text=f'Вопрос {question_number + 1}\n\n {question_text}',
+lbl_questions = tk.Label(root, text=f'{question_text}',
 font=('Helvetica', 16, 'bold'),
 wraplength=600,
 justify = tk.CENTER,
 bg = '#f0f4f8')
-lbl_questions.grid(row=0, column=0, columnspan=2, pady=50)
+lbl_questions.grid(row=1, column=0, columnspan=2, pady=[0, 50])
 
 #Логика на создание кнопки
 for idx, ans_text in enumerate(all_answers):
@@ -62,7 +70,7 @@ for idx, ans_text in enumerate(all_answers):
     pady=12,
     relief = tk.FLAT,
     bg = '#ffffff')
-    radio.grid(row=idx + 1, column=0, pady=10, columnspan=2)
+    radio.grid(row=1 + idx + 1, column=0, pady=10, columnspan=2)
 
     save_radio.append(radio)
 
@@ -102,8 +110,11 @@ def show_question():
     all_answers = current_question['answers'][:] #Делаем копию
     random.shuffle(all_answers) # Исразу перемешиваем её
 
+    #Вывод нового номера вопроса
+    lbl_num.config(text=f'Вопрос {question_number + 1}')
+
     #Вывод нового вопроса
-    lbl_questions.config(text=f'Вопрос {question_number + 1}\n\n {question_text}')
+    lbl_questions.config(text=f'{question_text}')
 
     #Вывод нового ответа
     for idx, radio in enumerate(save_radio):
