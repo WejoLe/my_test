@@ -6,8 +6,8 @@ import json
 from tkinter.messagebox import showwarning
 
 root = tk.Tk()
-root.title("Тест")
-root.geometry("600x600")
+root.title("Мой тест по Python — версия 1.0")
+root.geometry("600x650")
 root.eval('tk::PlaceWindow . center')
 root.configure(bg = '#f0f4f8')
 root.columnconfigure(0, weight=1)
@@ -47,10 +47,11 @@ random.shuffle(all_answers)
 
 #Вывод номера вопроса
 lbl_num = tk.Label(root, text=f'Вопрос {question_number + 1}',
-font=('Helvetica', 16),
+font=('Helvetica', 14),
 wraplength=600,
 justify = tk.CENTER,
-bg = '#f0f4f8')
+bg = '#f0f4f8',
+fg='#777777')
 lbl_num.grid(row=0, column=0, columnspan=2, pady=[50, 10])
 
 #Вывод вопроса
@@ -146,7 +147,7 @@ def check_answer():
     return next_question()
 
 #Кнопка для проверки
-btn = tk.Button(root, text='Ответить', command=check_answer)
+btn = tk.Button(root, text='Ответить', command=check_answer, padx=20, pady=10)
 btn.grid(row=6, column=0, pady=20, columnspan=2)
 
 root.mainloop()
