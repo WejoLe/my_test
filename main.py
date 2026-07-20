@@ -74,7 +74,7 @@ for idx, ans_text in enumerate(all_answers):
     radio.grid(row=1 + idx + 1, column=0, pady=10, columnspan=2)
 
     save_radio.append(radio)
-    
+
 #================================================= 4. ФУНКЦИИ (логика) ================================================= 
 
 def next_question():
@@ -89,8 +89,10 @@ def next_question():
             i.grid_forget()
         return
 
+    #Получаем случайные вопросы
     current_question = question[question_number]
 
+    #Указываем значения
     question_text = current_question['text']
     all_answers = current_question['answers']
     
