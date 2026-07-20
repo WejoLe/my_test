@@ -6,7 +6,7 @@ import json
 from tkinter.messagebox import showwarning
 
 root = tk.Tk()
-root.title("Мой тест по Python — версия 1.0")
+root.title("Мой тест на Python — версия 1.0")
 root.geometry("600x650")
 root.eval('tk::PlaceWindow . center')
 root.configure(bg = '#f0f4f8')
@@ -74,7 +74,7 @@ for idx, ans_text in enumerate(all_answers):
     radio.grid(row=1 + idx + 1, column=0, pady=10, columnspan=2)
 
     save_radio.append(radio)
-
+    
 #================================================= 4. ФУНКЦИИ (логика) ================================================= 
 
 def next_question():
@@ -86,15 +86,17 @@ def next_question():
         lbl_questions.config(text=f'Тест пройден! Правильных ответов: {sum(save_TF)} из {len(save_TF)} вопросов \n\n Процент правильных ответов: {result():.2f}%')
         btn.destroy()
         for i in save_radio:
-            i.destroy()
+            i.grid_forget()
         return
 
     current_question = question[question_number]
 
     question_text = current_question['text']
     all_answers = current_question['answers']
+    
     show_question()
 
+#Функция подсчёта процента для ответа
 def result():
 
     correct_count = sum(save_TF)
